@@ -1,0 +1,1166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vinit Dhabaliya | Real Estate Automation Specialist</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #FAF8F4; --bg2: #EAE2D6; --text: #2B2B2B;
+      --gold: #B9925A; --gold-hover: #8D6A3B;
+      --gold-pale: rgba(185,146,90,0.1); --gold-border: rgba(185,146,90,0.22);
+      --border: #D6CCBE; --white: #ffffff;
+      --font-display: 'Cormorant Garamond', serif;
+      --font-body: 'DM Sans', sans-serif;
+      --nav-h: 72px; --max-w: 1240px; --radius: 4px;
+      --shadow: 0 8px 40px rgba(43,43,43,0.08);
+      --shadow-lg: 0 20px 60px rgba(43,43,43,0.14);
+      --ease: cubic-bezier(0.25,0.46,0.45,0.94);
+    }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body { background: var(--bg); color: var(--text); font-family: var(--font-body); font-weight: 300; line-height: 1.7; overflow-x: hidden; }
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 10px; }
+    .container { max-width: var(--max-w); margin: 0 auto; padding: 0 32px; }
+    .section-pad { padding: 120px 0; }
+    .section-label { font-size: 11px; font-weight: 500; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; }
+    .section-heading { font-family: var(--font-display); font-size: clamp(2.2rem, 4vw, 3.2rem); font-weight: 500; line-height: 1.15; color: var(--text); margin-bottom: 24px; }
+    .section-heading em { font-style: italic; color: var(--gold); }
+    .section-heading.light { color: var(--white); }
+    .section-heading.light em { color: var(--gold); }
+    .section-sub { font-size: 1rem; line-height: 1.75; color: rgba(43,43,43,0.65); max-width: 560px; }
+    .section-sub.light { color: rgba(255,255,255,0.7); }
+    .section-header.text-center { text-align: center; margin-bottom: 72px; }
+    .section-header.text-center .section-sub { margin: 0 auto; }
+    .btn-primary { display: inline-block; background: var(--gold); color: var(--white); font-family: var(--font-body); font-size: 13px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; padding: 16px 36px; border: none; cursor: pointer; text-decoration: none; transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease; border-radius: var(--radius); }
+    .btn-primary:hover { background: var(--gold-hover); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(185,146,90,0.35); }
+    .btn-primary.full { width: 100%; text-align: center; }
+    .btn-secondary { display: inline-block; background: transparent; color: var(--white); font-family: var(--font-body); font-size: 13px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; padding: 15px 36px; border: 1px solid rgba(255,255,255,0.4); cursor: pointer; text-decoration: none; transition: border-color 0.3s, color 0.3s; border-radius: var(--radius); }
+    .btn-secondary:hover { border-color: var(--gold); color: var(--gold); }
+    .btn-secondary.full { width: 100%; text-align: center; margin-top: 12px; }
+    .card-icon-wrap { width: 48px; height: 48px; border-radius: 10px; background: var(--gold-pale); border: 1px solid var(--gold-border); display: flex; align-items: center; justify-content: center; margin-bottom: 18px; transition: background 0.3s, border-color 0.3s, transform 0.3s var(--ease); flex-shrink: 0; }
+    .card-icon-wrap svg { width: 22px; height: 22px; stroke: var(--gold); fill: none; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+    .float-icon-wrap { width: 40px; height: 40px; border-radius: 8px; background: rgba(185,146,90,0.12); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .float-icon-wrap svg { width: 20px; height: 20px; stroke: var(--gold); fill: none; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+    .pillar-icon-wrap svg { width: 16px; height: 16px; stroke: var(--gold); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0; }
+    .channel-icon-wrap { width: 36px; height: 36px; border-radius: 8px; background: rgba(185,146,90,0.12); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .channel-icon-wrap svg { width: 18px; height: 18px; stroke: var(--gold); fill: none; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+
+    /* NAV */
+    .navbar { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; height: var(--nav-h); transition: background 0.4s ease, box-shadow 0.4s ease; }
+    .navbar.scrolled { background: rgba(250,248,244,0.96); backdrop-filter: blur(16px); box-shadow: 0 1px 0 var(--border); }
+    .nav-container { max-width: var(--max-w); margin: 0 auto; padding: 0 32px; height: 100%; display: flex; align-items: center; justify-content: space-between; }
+    .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; cursor: pointer; }
+    .logo-mark { width: 32px; height: 32px; background: var(--gold); color: var(--white); font-family: var(--font-display); font-size: 18px; font-weight: 600; display: flex; align-items: center; justify-content: center; border-radius: 2px; flex-shrink: 0; }
+    .logo-name { font-size: 15px; font-weight: 500; letter-spacing: 0.02em; color: var(--gold); white-space: nowrap; }
+    .nav-links { display: flex; align-items: center; gap: 28px; list-style: none; }
+    .nav-link { font-size: 13px; font-weight: 400; letter-spacing: 0.05em; color: var(--gold); text-decoration: none; transition: color 0.2s; position: relative; white-space: nowrap; cursor: pointer; }
+    .nav-link::after { content: ''; position: absolute; bottom: -3px; left: 0; width: 0; height: 1px; background: var(--gold); transition: width 0.3s ease; }
+    .nav-link:hover { color: var(--gold-hover); }
+    .nav-link:hover::after { width: 100%; }
+    .nav-link.nav-cta { background: var(--gold); color: var(--white); padding: 9px 20px; border-radius: var(--radius); font-weight: 500; }
+    .nav-link.nav-cta::after { display: none; }
+    .nav-link.nav-cta:hover { background: var(--gold-hover); color: var(--white); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 8px; z-index: 1100; }
+    .hamburger span { display: block; width: 24px; height: 1.5px; background: var(--text); transition: transform 0.3s, opacity 0.3s; }
+    .mobile-nav { display: none; position: fixed; top: var(--nav-h); left: 0; right: 0; background: var(--bg); border-bottom: 1px solid var(--border); flex-direction: column; padding: 16px 0 24px; box-shadow: var(--shadow-lg); z-index: 999; transform: translateY(-110%); opacity: 0; transition: transform 0.35s ease, opacity 0.35s ease; }
+    .mobile-nav.open { transform: translateY(0); opacity: 1; }
+    .mobile-nav a { display: block; padding: 13px 32px; font-size: 15px; color: var(--gold); text-decoration: none; border-bottom: 1px solid var(--border); transition: color 0.2s, background 0.2s; cursor: pointer; }
+    .mobile-nav a:last-child { border-bottom: none; background: var(--gold); color: var(--white); text-align: center; margin: 16px 24px 0; border-radius: var(--radius); padding: 14px; }
+    .mobile-nav a:hover { color: var(--gold-hover); background: var(--bg2); }
+    .mobile-nav a:last-child:hover { background: var(--gold-hover); color: var(--white); }
+
+    /* PAGES */
+    #page-main, #page-service { transition: opacity 0.3s ease; }
+    #page-service { display: none; }
+
+    /* HERO */
+    .hero { position: relative; min-height: 100vh; display: flex; align-items: center; overflow: hidden; }
+    .hero-bg { position: absolute; inset: 0; z-index: 0; }
+    .hero-img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.55); }
+    .hero-overlay { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(43,43,43,0.75) 0%, rgba(43,43,43,0.35) 60%, rgba(185,146,90,0.15) 100%); }
+    .hero-grain { position: absolute; inset: 0; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E"); opacity: 0.3; pointer-events: none; }
+    .hero-content { position: relative; z-index: 1; max-width: var(--max-w); margin: 0 auto; padding: 0 32px; padding-top: var(--nav-h); width: 100%; }
+    .hero-eyebrow { display: flex; align-items: center; gap: 16px; font-size: 11px; font-weight: 500; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); margin-bottom: 32px; opacity: 0; animation: fadeIn 0.8s ease forwards; }
+    .eyebrow-line { display: block; width: 40px; height: 1px; background: var(--gold); opacity: 0.6; }
+    .hero-headline { font-family: var(--font-display); font-size: clamp(2.2rem, 5.2vw, 4.4rem); font-weight: 400; line-height: 1.05; color: var(--white); margin-bottom: 28px; max-width: 820px; animation: slideUp 0.9s ease 0.2s both; }
+    .hero-headline em { font-style: italic; color: var(--gold); }
+    .hero-sub { font-size: 1.05rem; line-height: 1.8; color: rgba(255,255,255,0.78); max-width: 580px; margin-bottom: 44px; font-weight: 300; animation: slideUp 0.9s ease 0.4s both; }
+    .hero-buttons { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 56px; animation: slideUp 0.9s ease 0.56s both; }
+    .hero-tags { display: flex; flex-wrap: wrap; gap: 10px; animation: slideUp 0.9s ease 0.7s both; }
+    .tag { font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.7); border: 1px solid rgba(255,255,255,0.2); padding: 7px 14px; border-radius: 2px; transition: border-color 0.3s, color 0.3s; }
+    .tag:hover { border-color: var(--gold); color: var(--gold); }
+    .hero-scroll-hint { position: absolute; right: 48px; bottom: 48px; z-index: 1; display: flex; flex-direction: column; align-items: center; gap: 12px; color: rgba(255,255,255,0.5); font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; animation: fadeIn 1.5s ease 1s forwards; opacity: 0; }
+    .scroll-line { width: 1px; height: 60px; background: linear-gradient(to bottom, rgba(255,255,255,0.5), transparent); animation: scrollPulse 2s ease infinite; }
+    .reveal-fade, .reveal-up, .reveal-card { opacity: 0; transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal-up { transform: translateY(32px); }
+    .reveal-card { transform: translateY(24px); }
+    .reveal-fade.visible, .reveal-up.visible, .reveal-card.visible { opacity: 1; transform: none; }
+    .delay-1 { transition-delay: 0.12s; } .delay-2 { transition-delay: 0.24s; } .delay-3 { transition-delay: 0.36s; } .delay-4 { transition-delay: 0.48s; }
+    .about { background: var(--bg); }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 100px; align-items: center; }
+    .about-visual { position: relative; }
+    .about-img-wrap { position: relative; border-radius: var(--radius); overflow: hidden; }
+    .about-img { width: 100%; height: 520px; object-fit: cover; display: block; transition: transform 0.8s ease; }
+    .about-img-wrap:hover .about-img { transform: scale(1.03); }
+    .about-img-border { position: absolute; bottom: -20px; right: -20px; width: 100%; height: 100%; border: 2px solid var(--gold); border-radius: var(--radius); z-index: -1; opacity: 0.4; }
+    .about-float-card { position: absolute; bottom: 40px; left: -32px; background: var(--white); border: 1px solid var(--border); padding: 18px 22px; border-radius: var(--radius); box-shadow: var(--shadow-lg); display: flex; align-items: center; gap: 14px; min-width: 220px; }
+    .float-text { display: flex; flex-direction: column; gap: 2px; }
+    .float-text strong { font-size: 13px; font-weight: 600; color: var(--text); }
+    .float-text span { font-size: 11px; color: rgba(43,43,43,0.55); }
+    .about-para { font-size: 1rem; line-height: 1.85; color: rgba(43,43,43,0.75); margin-bottom: 20px; }
+    .about-pillars { display: flex; flex-direction: column; gap: 14px; margin-top: 36px; padding-top: 36px; border-top: 1px solid var(--border); }
+    .pillar { display: flex; align-items: center; gap: 12px; }
+    .pillar-label { font-size: 13px; font-weight: 500; letter-spacing: 0.03em; color: var(--text); }
+    .expertise { background: var(--bg2); }
+    .expertise-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+    .expertise-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); padding: 28px 24px 22px; display: flex; flex-direction: column; position: relative; overflow: hidden; cursor: pointer; transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease), border-color 0.35s; text-decoration: none; color: inherit; min-height: 220px; }
+    .expertise-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--gold), rgba(185,146,90,0.3)); transform: scaleX(0); transform-origin: left; transition: transform 0.4s var(--ease); }
+    .expertise-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); border-color: var(--gold-border); }
+    .expertise-card:hover::before { transform: scaleX(1); }
+    .expertise-card:hover .card-icon-wrap { background: rgba(185,146,90,0.18); border-color: rgba(185,146,90,0.45); transform: scale(1.08) rotate(-3deg); }
+    .ec-num { font-family: var(--font-display); font-size: 38px; font-weight: 300; color: rgba(185,146,90,0.12); line-height: 1; position: absolute; top: 16px; right: 20px; transition: color 0.3s; }
+    .expertise-card:hover .ec-num { color: rgba(185,146,90,0.22); }
+    .ec-title { font-family: var(--font-display); font-size: 1.12rem; font-weight: 600; color: var(--text); line-height: 1.3; margin-bottom: 0; }
+    .ec-tagline { font-size: 0.82rem; line-height: 1.6; color: rgba(43,43,43,0.55); margin-top: 8px; flex-grow: 1; }
+    .ec-divider { height: 1px; background: var(--border); margin: 18px 0 0; }
+    .ec-cta { display: inline-flex; align-items: center; gap: 6px; font-size: 11px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gold); padding-top: 14px; margin-top: 0; transition: color 0.2s, gap 0.25s var(--ease); background: none; border: none; font-family: var(--font-body); cursor: pointer; text-decoration: none; }
+    .ec-cta svg { width: 13px; height: 13px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; transition: transform 0.25s var(--ease); }
+    .expertise-card:hover .ec-cta { color: var(--gold-hover); gap: 10px; }
+    .expertise-card:hover .ec-cta svg { transform: translateX(3px); }
+    .projects { background: var(--bg); }
+    .projects-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .project-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; display: flex; flex-direction: column; transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease), border-color 0.35s; text-decoration: none; color: inherit; cursor: pointer; }
+    .project-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); border-color: var(--gold-border); }
+    .project-img-wrap { position: relative; overflow: hidden; height: 200px; }
+    .project-img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.7s ease; }
+    .project-card:hover .project-img { transform: scale(1.06); }
+    .project-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(43,43,43,0.55) 0%, transparent 55%); }
+    .project-badge { position: absolute; top: 16px; left: 16px; background: var(--gold); color: var(--white); font-size: 10px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; padding: 5px 12px; border-radius: 2px; }
+    .project-body { padding: 22px 22px 18px; display: flex; flex-direction: column; flex: 1; }
+    .project-title { font-family: var(--font-display); font-size: 1.25rem; font-weight: 600; color: var(--text); line-height: 1.25; }
+    .project-divider { height: 1px; background: var(--border); margin: 16px 0 0; }
+    .project-cta { display: inline-flex; align-items: center; gap: 6px; font-size: 11px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gold); padding-top: 14px; transition: color 0.2s, gap 0.25s var(--ease); background: none; border: none; font-family: var(--font-body); cursor: pointer; text-decoration: none; margin-top: auto; }
+    .project-cta svg { width: 13px; height: 13px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; transition: transform 0.25s var(--ease); }
+    .project-card:hover .project-cta { color: var(--gold-hover); gap: 10px; }
+    .project-card:hover .project-cta svg { transform: translateX(3px); }
+    .flow-section { position: relative; overflow: hidden; }
+    .flow-bg { position: absolute; inset: 0; z-index: 0; }
+    .flow-bg-img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.35); }
+    .flow-overlay { position: absolute; inset: 0; background: linear-gradient(to right, rgba(43,43,43,0.82) 0%, rgba(43,43,43,0.55) 100%); }
+    .flow-section .container { position: relative; z-index: 1; }
+    .flow-pipeline { display: flex; align-items: flex-start; justify-content: center; flex-wrap: wrap; gap: 4px; padding: 48px 0; }
+    .flow-step { display: flex; flex-direction: column; align-items: center; gap: 12px; flex-shrink: 0; padding: 0 10px; max-width: 110px; }
+    .flow-dot { width: 14px; height: 14px; border-radius: 50%; background: rgba(255,255,255,0.3); border: 2px solid var(--gold); position: relative; flex-shrink: 0; }
+    .flow-dot.active { background: var(--gold); }
+    .flow-dot::before { content: ''; position: absolute; inset: -4px; border-radius: 50%; border: 1px solid rgba(185,146,90,0.3); animation: pulse 2s ease infinite; }
+    .flow-label { font-size: 11px; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; color: var(--white); text-align: center; line-height: 1.3; }
+    .flow-desc { font-size: 10px; color: rgba(255,255,255,0.55); text-align: center; line-height: 1.4; }
+    .flow-arrow { font-size: 18px; color: var(--gold); opacity: 0.6; flex-shrink: 0; margin-top: 2px; }
+    .cases { background: var(--bg2); }
+    .cases-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .case-card { background: var(--white); border: 1px solid var(--border); padding: 36px 28px 24px; border-radius: var(--radius); display: flex; flex-direction: column; transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease), border-color 0.35s; cursor: pointer; text-decoration: none; color: inherit; position: relative; overflow: hidden; }
+    .case-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--gold), rgba(185,146,90,0.3)); transform: scaleX(0); transform-origin: left; transition: transform 0.4s var(--ease); }
+    .case-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); border-color: var(--gold-border); }
+    .case-card:hover::before { transform: scaleX(1); }
+    .case-num { font-family: var(--font-display); font-size: 60px; font-weight: 300; color: rgba(185,146,90,0.1); line-height: 1; margin-bottom: 16px; transition: color 0.3s; }
+    .case-card:hover .case-num { color: rgba(185,146,90,0.2); }
+    .case-title { font-family: var(--font-display); font-size: 1.25rem; font-weight: 600; color: var(--text); line-height: 1.3; }
+    .case-divider { height: 1px; background: var(--border); margin: 18px 0 0; }
+    .case-cta { display: inline-flex; align-items: center; gap: 6px; font-size: 11px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gold); padding-top: 14px; margin-top: auto; transition: color 0.2s, gap 0.25s var(--ease); background: none; border: none; font-family: var(--font-body); cursor: pointer; text-decoration: none; }
+    .case-cta svg { width: 13px; height: 13px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; transition: transform 0.25s var(--ease); }
+    .case-card:hover .case-cta { color: var(--gold-hover); gap: 10px; }
+    .case-card:hover .case-cta svg { transform: translateX(3px); }
+    .process { background: var(--bg); }
+    .process-timeline { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
+    .process-step { padding: 44px 36px 32px; border: 1px solid var(--border); background: var(--bg); transition: background 0.35s, box-shadow 0.35s; display: flex; flex-direction: column; cursor: pointer; }
+    .process-step:hover { background: var(--bg2); box-shadow: var(--shadow); z-index: 1; }
+    .step-num { font-family: var(--font-display); font-size: 56px; font-weight: 300; color: rgba(185,146,90,0.15); line-height: 1; margin-bottom: 20px; }
+    .step-title { font-family: var(--font-display); font-size: 1.35rem; font-weight: 600; color: var(--text); }
+    .step-divider { height: 1px; background: var(--border); margin: 18px 0 0; }
+    .step-cta { display: inline-flex; align-items: center; gap: 6px; font-size: 11px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gold); padding-top: 14px; margin-top: auto; transition: color 0.2s, gap 0.25s var(--ease); background: none; border: none; font-family: var(--font-body); cursor: pointer; text-decoration: none; }
+    .step-cta svg { width: 13px; height: 13px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; transition: transform 0.25s var(--ease); }
+    .process-step:hover .step-cta { color: var(--gold-hover); gap: 10px; }
+    .process-step:hover .step-cta svg { transform: translateX(3px); }
+
+    /* CONTACT */
+    .contact { position: relative; overflow: hidden; }
+    .contact-bg { position: absolute; inset: 0; z-index: 0; }
+    .contact-bg-img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.3); }
+    .contact-overlay { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(43,43,43,0.9) 0%, rgba(43,43,43,0.6) 100%); }
+    .contact .container { position: relative; z-index: 1; }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+    .contact-sub { font-size: 1rem; line-height: 1.8; color: rgba(255,255,255,0.7); margin-bottom: 40px; }
+    .contact-channels { display: flex; flex-direction: column; gap: 14px; }
+    .channel-item { display: flex; align-items: center; gap: 16px; text-decoration: none; padding: 16px 18px; border: 1px solid rgba(255,255,255,0.1); border-radius: var(--radius); transition: border-color 0.3s, background 0.3s; }
+    .channel-item:hover { border-color: var(--gold); background: rgba(185,146,90,0.08); }
+    .channel-item div { display: flex; flex-direction: column; gap: 2px; }
+    .channel-item strong { font-size: 13px; font-weight: 600; color: var(--white); }
+    .channel-item span { font-size: 12px; color: rgba(255,255,255,0.55); }
+    .contact-form-wrap { background: var(--bg); border: 1px solid var(--border); padding: 44px 40px; border-radius: var(--radius); }
+    .contact-form { display: flex; flex-direction: column; }
+    .form-group { display: flex; flex-direction: column; gap: 8px; margin-bottom: 20px; }
+    .form-group label { font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text); }
+    .form-group input, .form-group textarea { width: 100%; padding: 13px 16px; border: 1px solid var(--border); border-radius: var(--radius); background: var(--bg); color: var(--text); font-family: var(--font-body); font-size: 0.9rem; font-weight: 300; transition: border-color 0.3s, box-shadow 0.3s; outline: none; resize: none; }
+    .form-group input:focus, .form-group textarea:focus { border-color: var(--gold); box-shadow: 0 0 0 3px rgba(185,146,90,0.1); }
+    .form-buttons { display: flex; flex-direction: column; gap: 0; margin-top: 8px; }
+    .form-buttons .btn-secondary { border-color: var(--border); color: var(--text); }
+    .form-buttons .btn-secondary:hover { border-color: var(--gold); color: var(--gold); }
+    .form-status { display: none; text-align: center; padding: 13px; border-radius: var(--radius); font-size: 13px; font-weight: 500; margin-top: 14px; }
+    .form-status.success { background: rgba(90,138,90,0.1); color: #3d7a3d; border: 1px solid rgba(90,138,90,0.25); display: block; }
+    .form-status.error { background: rgba(185,90,90,0.1); color: #9b3535; border: 1px solid rgba(185,90,90,0.25); display: block; }
+    .footer { background: var(--text); padding: 72px 0 36px; }
+    .footer-grid { display: grid; grid-template-columns: 1.5fr repeat(3, 1fr); gap: 48px; padding-bottom: 56px; border-bottom: 1px solid rgba(255,255,255,0.08); margin-bottom: 36px; }
+    .footer .logo-name { color: var(--white); }
+    .footer-tagline { font-size: 0.88rem; line-height: 1.75; color: rgba(255,255,255,0.45); margin-top: 16px; max-width: 260px; }
+    .footer-links-group strong { display: block; font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 20px; }
+    .footer-links-group ul { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+    .footer-links-group a { font-size: 0.88rem; color: rgba(255,255,255,0.45); text-decoration: none; transition: color 0.2s; cursor: pointer; }
+    .footer-links-group a:hover { color: var(--gold); }
+    .footer-bottom { display: flex; justify-content: space-between; align-items: center; font-size: 11px; color: rgba(255,255,255,0.3); letter-spacing: 0.04em; flex-wrap: wrap; gap: 12px; }
+
+    /* SERVICE PAGE STYLES */
+    .svc-hero { position: relative; min-height: 60vh; display: flex; align-items: flex-end; overflow: hidden; padding-bottom: 80px; }
+    .svc-hero-bg { position: absolute; inset: 0; z-index: 0; }
+    .svc-hero-img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.45); }
+    .svc-hero-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(43,43,43,0.95) 0%, rgba(43,43,43,0.3) 60%); }
+    .svc-hero-content { position: relative; z-index: 1; max-width: var(--max-w); margin: 0 auto; padding: 0 32px; width: 100%; padding-top: var(--nav-h); }
+    .svc-breadcrumb { display: flex; align-items: center; gap: 10px; font-size: 12px; color: rgba(255,255,255,0.5); margin-bottom: 28px; margin-top: 40px; }
+    .svc-breadcrumb a { color: var(--gold); text-decoration: none; cursor: pointer; }
+    .svc-breadcrumb a:hover { text-decoration: underline; }
+    .svc-hero h1 { font-family: var(--font-display); font-size: clamp(2.2rem, 5vw, 4rem); font-weight: 400; color: var(--white); line-height: 1.1; margin-bottom: 20px; }
+    .svc-hero h1 em { font-style: italic; color: var(--gold); }
+    .svc-hero-sub { font-size: 1.05rem; color: rgba(255,255,255,0.75); max-width: 600px; line-height: 1.8; margin-bottom: 32px; }
+    .svc-badge { display: inline-block; background: var(--gold); color: var(--white); font-size: 11px; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; padding: 6px 16px; border-radius: 2px; margin-bottom: 20px; }
+    .svc-body { background: var(--bg); }
+    .svc-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 64px; align-items: start; padding: 80px 0; }
+    .svc-main {}
+    .svc-section-title { font-family: var(--font-display); font-size: 1.8rem; font-weight: 600; color: var(--text); margin-bottom: 16px; line-height: 1.2; }
+    .svc-section-title em { font-style: italic; color: var(--gold); }
+    .svc-para { font-size: 1rem; line-height: 1.85; color: rgba(43,43,43,0.75); margin-bottom: 20px; }
+    .svc-features { display: flex; flex-direction: column; gap: 0; margin: 32px 0; border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
+    .svc-feature { padding: 20px 24px; border-bottom: 1px solid var(--border); display: flex; align-items: flex-start; gap: 16px; transition: background 0.2s; }
+    .svc-feature:last-child { border-bottom: none; }
+    .svc-feature:hover { background: var(--bg2); }
+    .svc-feature-check { width: 22px; height: 22px; border-radius: 50%; background: var(--gold-pale); border: 1px solid var(--gold-border); display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; }
+    .svc-feature-check svg { width: 11px; height: 11px; stroke: var(--gold); fill: none; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+    .svc-feature-text strong { display: block; font-size: 14px; font-weight: 600; color: var(--text); margin-bottom: 4px; }
+    .svc-feature-text span { font-size: 13px; color: rgba(43,43,43,0.6); line-height: 1.6; }
+    .svc-results { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 32px 0; }
+    .svc-result-card { background: var(--white); border: 1px solid var(--border); padding: 24px 20px; border-radius: var(--radius); text-align: center; }
+    .svc-result-num { font-family: var(--font-display); font-size: 2.4rem; font-weight: 600; color: var(--gold); line-height: 1; margin-bottom: 8px; }
+    .svc-result-label { font-size: 12px; color: rgba(43,43,43,0.6); line-height: 1.5; }
+    .svc-process-steps { display: flex; flex-direction: column; gap: 0; margin: 32px 0; }
+    .svc-step { display: flex; gap: 20px; padding: 24px 0; border-bottom: 1px solid var(--border); }
+    .svc-step:last-child { border-bottom: none; }
+    .svc-step-num { font-family: var(--font-display); font-size: 2rem; font-weight: 300; color: rgba(185,146,90,0.3); line-height: 1; flex-shrink: 0; width: 48px; }
+    .svc-step-content strong { display: block; font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 6px; }
+    .svc-step-content span { font-size: 13px; color: rgba(43,43,43,0.65); line-height: 1.7; }
+    .svc-sidebar { position: sticky; top: calc(var(--nav-h) + 24px); display: flex; flex-direction: column; gap: 24px; }
+    .svc-cta-card { background: var(--text); padding: 36px 28px; border-radius: var(--radius); }
+    .svc-cta-card h3 { font-family: var(--font-display); font-size: 1.5rem; font-weight: 500; color: var(--white); margin-bottom: 12px; line-height: 1.2; }
+    .svc-cta-card p { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.7; margin-bottom: 24px; }
+    .svc-cta-card .btn-primary { width: 100%; text-align: center; display: block; margin-bottom: 10px; }
+    .svc-cta-wa { display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; text-align: center; font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.6); text-decoration: none; padding: 13px; border: 1px solid rgba(255,255,255,0.15); border-radius: var(--radius); transition: border-color 0.3s, color 0.3s; }
+    .svc-cta-wa:hover { border-color: var(--gold); color: var(--gold); }
+    .svc-info-card { background: var(--white); border: 1px solid var(--border); padding: 28px; border-radius: var(--radius); }
+    .svc-info-card h4 { font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; }
+    .svc-info-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+    .svc-info-list li { font-size: 13px; color: rgba(43,43,43,0.7); display: flex; align-items: center; gap: 10px; }
+    .svc-info-list li::before { content: ''; width: 4px; height: 4px; border-radius: 50%; background: var(--gold); flex-shrink: 0; }
+    .svc-more { background: var(--bg2); padding: 80px 0; }
+    .svc-more h2 { font-family: var(--font-display); font-size: 2rem; font-weight: 500; color: var(--text); margin-bottom: 40px; }
+    .svc-more h2 em { font-style: italic; color: var(--gold); }
+    .svc-more-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .svc-more-card { background: var(--white); border: 1px solid var(--border); padding: 24px; border-radius: var(--radius); cursor: pointer; transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s; position: relative; overflow: hidden; }
+    .svc-more-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--gold), rgba(185,146,90,0.3)); transform: scaleX(0); transform-origin: left; transition: transform 0.4s; }
+    .svc-more-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); border-color: var(--gold-border); }
+    .svc-more-card:hover::before { transform: scaleX(1); }
+    .svc-more-card h3 { font-family: var(--font-display); font-size: 1.1rem; font-weight: 600; color: var(--text); margin-bottom: 8px; }
+    .svc-more-card p { font-size: 12px; color: rgba(43,43,43,0.6); line-height: 1.6; }
+    .svc-more-card .ec-cta { margin-top: 16px; }
+
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes slideUp { from { opacity: 0; transform: translateY(32px); } to { opacity: 1; transform: none; } }
+    @keyframes scrollPulse { 0%,100% { opacity: 0.5; } 50% { opacity: 1; } }
+    @keyframes pulse { 0%,100% { transform: scale(1); opacity: 0.5; } 50% { transform: scale(1.4); opacity: 0; } }
+
+    @media (max-width: 1100px) {
+      .expertise-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 36px; }
+      .svc-grid { grid-template-columns: 1fr; }
+      .svc-sidebar { position: static; }
+      .svc-more-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 900px) {
+      .about-grid { grid-template-columns: 1fr; gap: 56px; }
+      .about-float-card { position: static; margin-top: 20px; }
+      .about-img-border { display: none; }
+      .about-img { height: 380px; }
+      .projects-grid { grid-template-columns: 1fr 1fr; gap: 20px; }
+      .cases-grid { grid-template-columns: 1fr; }
+      .process-timeline { grid-template-columns: 1fr 1fr; }
+      .contact-grid { grid-template-columns: 1fr; gap: 48px; }
+      .hero-scroll-hint { display: none; }
+      .svc-results { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 768px) {
+      :root { --nav-h: 64px; }
+      .section-pad { padding: 80px 0; }
+      .container { padding: 0 20px; }
+      .hamburger { display: flex; }
+      .nav-links { display: none; }
+      .mobile-nav { display: flex; }
+      .hero-headline { font-size: clamp(2rem, 8vw, 3rem); }
+      .expertise-grid { grid-template-columns: 1fr; }
+      .projects-grid { grid-template-columns: 1fr; }
+      .process-timeline { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; gap: 28px; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+      .contact-form-wrap { padding: 28px 20px; }
+      .flow-pipeline { justify-content: flex-start; flex-wrap: nowrap; overflow-x: auto; padding-bottom: 16px; }
+      .svc-more-grid { grid-template-columns: 1fr; }
+      .svc-results { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 480px) {
+      .hero-buttons { flex-direction: column; }
+      .hero-buttons .btn-primary, .hero-buttons .btn-secondary { text-align: center; width: 100%; }
+      .nav-container { padding: 0 16px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a class="nav-logo" onclick="goHome()">
+        <span class="logo-mark">V</span>
+        <span class="logo-name">Vinit Dhabaliya</span>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a onclick="goHome('about')" class="nav-link">About</a></li>
+        <li><a onclick="goHome('expertise')" class="nav-link">Expertise</a></li>
+        <li><a onclick="goHome('projects')" class="nav-link">Projects</a></li>
+        <li><a onclick="goHome('process')" class="nav-link">Process</a></li>
+        <li><a onclick="goHome('contact')" class="nav-link nav-cta">Book Consultation</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <nav class="mobile-nav" id="mobileNav">
+      <a onclick="goHome('about');closeMobile()">About</a>
+      <a onclick="goHome('expertise');closeMobile()">Expertise</a>
+      <a onclick="goHome('projects');closeMobile()">Projects</a>
+      <a onclick="goHome('process');closeMobile()">Process</a>
+      <a onclick="goHome('contact');closeMobile()">Book Consultation</a>
+    </nav>
+  </nav>
+
+  <!-- MAIN PAGE -->
+  <div id="page-main">
+
+    <!-- HERO -->
+    <section class="hero" id="hero">
+      <div class="hero-bg">
+        <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1600&q=80" alt="City skyline" class="hero-img" />
+        <div class="hero-overlay"></div>
+        <div class="hero-grain"></div>
+      </div>
+      <div class="hero-content">
+        <div class="hero-eyebrow"><span class="eyebrow-line"></span>Real Estate Automation Specialist<span class="eyebrow-line"></span></div>
+        <h1 class="hero-headline">I Build Automation <em>Systems</em> That Turn Leads Into Closings</h1>
+        <p class="hero-sub">I help builders, brokers, and real estate teams streamline lead generation, CRM workflows, follow-ups, Meta Ads, WhatsApp automation, and AI-driven sales systems — so your team can close more without working more.</p>
+        <div class="hero-buttons">
+          <a onclick="document.getElementById('projects').scrollIntoView({behavior:'smooth'})" class="btn-primary">View Projects</a>
+          <a onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})" class="btn-secondary">Book Consultation</a>
+        </div>
+        <div class="hero-tags">
+          <span class="tag">CRM Systems</span><span class="tag">AI Automation</span><span class="tag">Meta Ads</span>
+          <span class="tag">WhatsApp Workflows</span><span class="tag">Lead Management</span><span class="tag">Sales Funnels</span>
+        </div>
+      </div>
+      <div class="hero-scroll-hint"><span>Scroll</span><div class="scroll-line"></div></div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="about section-pad" id="about">
+      <div class="container">
+        <div class="about-grid">
+          <div class="about-visual">
+            <div class="about-img-wrap reveal-fade">
+              <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=80" alt="Real estate office" class="about-img" />
+              <div class="about-img-border"></div>
+            </div>
+            <div class="about-float-card reveal-up delay-1">
+              <div class="float-icon-wrap"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M2 12h3M19 12h3M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12"/></svg></div>
+              <div class="float-text"><strong>Systems-First</strong><span>Automation Approach</span></div>
+            </div>
+          </div>
+          <div class="about-content">
+            <div class="section-label reveal-fade">About</div>
+            <h2 class="section-heading reveal-up">The Specialist Behind Your <em>Sales Engine</em></h2>
+            <p class="about-para reveal-up delay-1">I'm a real estate automation consultant with a deep focus on systems architecture. My work sits at the intersection of CRM implementation, lead lifecycle management, and intelligent automation — built specifically for the real estate industry.</p>
+            <p class="about-para reveal-up delay-2">Where most marketers stop at lead generation, I go further — designing end-to-end systems that capture, qualify, nurture, and convert leads automatically. From Meta Ads funnels to WhatsApp AI workflows to CRM dashboards, every system I build is engineered for conversion, not just activity.</p>
+            <p class="about-para reveal-up delay-3">My approach is automation-first. I understand how real estate sales teams operate, where leads fall through the cracks, and exactly how to close those gaps with technology.</p>
+            <div class="about-pillars reveal-up delay-4">
+              <div class="pillar"><div class="pillar-icon-wrap"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="pillar-label">Automation-First Mindset</div></div>
+              <div class="pillar"><div class="pillar-icon-wrap"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="pillar-label">Lead Lifecycle Optimization</div></div>
+              <div class="pillar"><div class="pillar-icon-wrap"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="pillar-label">Conversion-Focused Systems</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPERTISE -->
+    <section class="expertise section-pad" id="expertise">
+      <div class="container">
+        <div class="section-header text-center">
+          <div class="section-label reveal-fade">Expertise</div>
+          <h2 class="section-heading reveal-up">What I Build For <em>Real Estate Businesses</em></h2>
+          <p class="section-sub reveal-up delay-1">Eight core systems that transform how builders and brokers handle leads, follow-ups, and sales operations.</p>
+        </div>
+        <div class="expertise-grid" id="expertiseGrid"></div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section class="projects section-pad" id="projects">
+      <div class="container">
+        <div class="section-header text-center">
+          <div class="section-label reveal-fade">Portfolio</div>
+          <h2 class="section-heading reveal-up">Real Systems, <em>Real Outcomes</em></h2>
+          <p class="section-sub reveal-up delay-1">A selection of automation systems and workflows built for real estate businesses.</p>
+        </div>
+        <div class="projects-grid" id="projectsGrid"></div>
+      </div>
+    </section>
+
+    <!-- FLOW -->
+    <section class="flow-section section-pad" id="workflow">
+      <div class="flow-bg">
+        <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=1600&q=80" alt="Real estate" class="flow-bg-img" />
+        <div class="flow-overlay"></div>
+      </div>
+      <div class="container">
+        <div class="section-header text-center">
+          <div class="section-label light reveal-fade">Automation Flow</div>
+          <h2 class="section-heading light reveal-up">The System That <em>Never Sleeps</em></h2>
+          <p class="section-sub light reveal-up delay-1">A connected end-to-end automation pipeline — from the moment a lead appears to the day they sign.</p>
+        </div>
+        <div class="flow-pipeline reveal-up delay-2">
+          <div class="flow-step"><div class="flow-dot"></div><div class="flow-label">Lead Capture</div><div class="flow-desc">Meta Ads, WhatsApp, Website</div></div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-step"><div class="flow-dot"></div><div class="flow-label">CRM Entry</div><div class="flow-desc">Auto-assigned, tagged</div></div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-step"><div class="flow-dot"></div><div class="flow-label">AI Qualification</div><div class="flow-desc">Call agent + bot</div></div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-step"><div class="flow-dot"></div><div class="flow-label">WhatsApp Nurture</div><div class="flow-desc">Automated sequence</div></div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-step"><div class="flow-dot"></div><div class="flow-label">Site Visit</div><div class="flow-desc">Scheduled auto</div></div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-step"><div class="flow-dot"></div><div class="flow-label">Sales Tracking</div><div class="flow-desc">Pipeline updated live</div></div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-step"><div class="flow-dot active"></div><div class="flow-label">Reporting</div><div class="flow-desc">Live dashboard</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CASES -->
+    <section class="cases section-pad" id="cases">
+      <div class="container">
+        <div class="section-header text-center">
+          <div class="section-label reveal-fade">Case Studies</div>
+          <h2 class="section-heading reveal-up">Work That <em>Moves the Needle</em></h2>
+          <p class="section-sub reveal-up delay-1">Real challenges, real systems, real results.</p>
+        </div>
+        <div class="cases-grid" id="casesGrid"></div>
+      </div>
+    </section>
+
+    <!-- PROCESS -->
+    <section class="process section-pad" id="process">
+      <div class="container">
+        <div class="section-header text-center">
+          <div class="section-label reveal-fade">How I Work</div>
+          <h2 class="section-heading reveal-up">A Structured Path <em>From Chaos to Clarity</em></h2>
+        </div>
+        <div class="process-timeline" id="processTimeline"></div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="contact section-pad" id="contact">
+      <div class="contact-bg">
+        <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=1600&q=80" alt="Luxury real estate" class="contact-bg-img" />
+        <div class="contact-overlay"></div>
+      </div>
+      <div class="container">
+        <div class="contact-grid">
+          <div class="contact-info">
+            <div class="section-label light reveal-fade">Get In Touch</div>
+            <h2 class="section-heading light reveal-up">Let's Build a Smarter <em>Real Estate Sales System</em></h2>
+            <p class="contact-sub reveal-up delay-1">Whether you're a builder managing 50 leads a week or a brokerage trying to scale without scaling headcount — the right automation system changes everything.</p>
+            <div class="contact-channels reveal-up delay-2">
+              <a href="mailto:vinitdhabaliya@gmail.com" class="channel-item">
+                <div class="channel-icon-wrap"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+                <div><strong>Email</strong><span>vinitdhabaliya@gmail.com</span></div>
+              </a>
+              <a href="https://wa.me/918469831950" class="channel-item" target="_blank">
+                <div class="channel-icon-wrap"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></div>
+                <div><strong>WhatsApp</strong><span>+91 84698 31950</span></div>
+              </a>
+              <a href="https://linkedin.com/in/vinitdhabaliya" class="channel-item" target="_blank">
+                <div class="channel-icon-wrap"><svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></div>
+                <div><strong>LinkedIn</strong><span>linkedin.com/in/vinitdhabaliya</span></div>
+              </a>
+              <a href="https://instagram.com/vinitdhabaliya" class="channel-item" target="_blank">
+                <div class="channel-icon-wrap"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></div>
+                <div><strong>Instagram</strong><span>@vinitdhabaliya</span></div>
+              </a>
+            </div>
+          </div>
+          <div class="contact-form-wrap reveal-up delay-1">
+            <form class="contact-form" id="contactForm" novalidate>
+              <div class="form-group"><label for="name">Full Name</label><input type="text" id="name" placeholder="Your name" required /></div>
+              <div class="form-group"><label for="email">Email Address</label><input type="email" id="email" placeholder="your@email.com" required /></div>
+              <div class="form-group"><label for="whatsapp">WhatsApp Number</label><input type="tel" id="whatsapp" placeholder="+91 00000 00000" /></div>
+              <div class="form-group"><label for="requirement">Project Requirement</label><textarea id="requirement" rows="4" placeholder="Tell me about your business, current challenges, and what you want to automate..."></textarea></div>
+              <div class="form-buttons">
+                <button type="submit" class="btn-primary full" id="submitBtn">Schedule Consultation</button>
+                <a href="https://wa.me/918469831950" class="btn-secondary full" target="_blank">Discuss on WhatsApp</a>
+              </div>
+              <div class="form-status" id="formStatus"></div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <a onclick="goHome()" class="nav-logo"><span class="logo-mark">V</span><span class="logo-name">Vinit Dhabaliya</span></a>
+            <p class="footer-tagline">Real estate automation systems for modern builders and brokers.</p>
+          </div>
+          <div class="footer-links-group">
+            <strong>Navigation</strong>
+            <ul>
+              <li><a onclick="goHome('about')">About</a></li><li><a onclick="goHome('expertise')">Expertise</a></li>
+              <li><a onclick="goHome('projects')">Projects</a></li><li><a onclick="goHome('process')">Process</a></li>
+              <li><a onclick="goHome('contact')">Contact</a></li>
+            </ul>
+          </div>
+          <div class="footer-links-group">
+            <strong>Services</strong>
+            <ul>
+              <li><a onclick="showService('crm-setup')">CRM Setup</a></li>
+              <li><a onclick="showService('meta-ads')">Meta Ads Funnels</a></li>
+              <li><a onclick="showService('whatsapp-ai')">WhatsApp Automation</a></li>
+              <li><a onclick="showService('ai-calling-agent')">AI Calling Agents</a></li>
+              <li><a onclick="showService('follow-up-automation')">Follow-Up Systems</a></li>
+              <li><a onclick="showService('dashboard-reporting')">Lead Dashboards</a></li>
+            </ul>
+          </div>
+          <div class="footer-links-group">
+            <strong>Connect</strong>
+            <ul>
+              <li><a href="mailto:vinitdhabaliya@gmail.com">Email</a></li>
+              <li><a href="https://wa.me/918469831950" target="_blank">WhatsApp</a></li>
+              <li><a href="https://linkedin.com/in/vinitdhabaliya" target="_blank">LinkedIn</a></li>
+              <li><a href="https://instagram.com/vinitdhabaliya" target="_blank">Instagram</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <span>&copy; 2025 Vinit Dhabaliya. All rights reserved.</span>
+          <span>Real Estate Automation · CRM · AI Workflows · Meta Ads</span>
+        </div>
+      </div>
+    </footer>
+
+  </div><!-- /page-main -->
+
+  <!-- SERVICE PAGE (rendered dynamically) -->
+  <div id="page-service"></div>
+
+  <script>
+  var ARROW = '<svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>';
+  var CHECK = '<svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>';
+
+  var SERVICES = {
+    'crm-setup': {
+      badge: 'CRM Systems',
+      title: 'CRM Setup &amp; <em>Optimization</em>',
+      sub: 'A fully configured CRM is the backbone of every high-performing real estate sales team. I build, customize, and automate your CRM so leads never fall through the cracks.',
+      img: 'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=1200&q=80',
+      desc1: 'Most real estate teams use a CRM like a phonebook — just storing contacts. I transform it into an active sales engine. Every lead that enters your system gets automatically tagged, scored, assigned to the right agent, and dropped into a nurture sequence — without anyone lifting a finger.',
+      desc2: 'Whether you\'re on Salesforce, HubSpot, Zoho, or a custom platform, I design pipelines that mirror your actual sales process — from initial inquiry to booking to handover — with triggers, alerts, and automations at every stage.',
+      features: [
+        { title: 'Custom Pipeline Architecture', desc: 'Sales stages designed around your actual real estate process — inquiry, qualification, site visit, negotiation, booking, and post-sale.' },
+        { title: 'Auto Lead Assignment', desc: 'Incoming leads routed instantly to the right agent based on location, project, budget, or round-robin rules.' },
+        { title: 'Activity Tracking & Alerts', desc: 'Never miss a follow-up. Automated reminders, overdue flags, and manager escalations built into the workflow.' },
+        { title: 'Source Attribution', desc: 'Know exactly which Meta Ad, WhatsApp campaign, or referral source each lead came from — down to the campaign level.' },
+        { title: 'CRM-WhatsApp Integration', desc: 'Two-way sync between your CRM and WhatsApp Business API — messages logged, statuses updated automatically.' },
+        { title: 'Reporting Dashboards', desc: 'Live dashboards showing pipeline health, agent performance, conversion rates, and CPL across all channels.' },
+      ],
+      results: [{ num: '3×', label: 'Faster lead response time with auto-assignment' }, { num: '60%', label: 'Reduction in leads going cold from missed follow-ups' }, { num: '100%', label: 'Lead source visibility with zero manual tagging' }],
+      steps: [
+        { title: 'Audit & Discovery', desc: 'I map your current sales workflow, identify the gaps, and understand how your team actually operates.' },
+        { title: 'CRM Configuration', desc: 'Custom fields, pipelines, stages, user roles, and permissions built to match your process precisely.' },
+        { title: 'Automation Setup', desc: 'Lead assignment rules, follow-up triggers, status change automations, and escalation logic configured and tested.' },
+        { title: 'Integration & Training', desc: 'Connected to your ads, WhatsApp, and reporting tools. Full team training included with documentation.' },
+      ],
+      info: ['Salesforce, HubSpot, Zoho, or custom', '2–3 weeks implementation', 'Full team training included', 'Ongoing support available', 'WhatsApp + Meta Ads integration'],
+    },
+    'meta-ads': {
+      badge: 'Meta Ads',
+      title: 'Meta Ads <em>Lead Generation</em>',
+      sub: 'Precision-targeted Meta campaigns that put your project in front of the right buyers — and send leads directly into your CRM within seconds of form submission.',
+      img: 'https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=1200&q=80',
+      desc1: 'Meta Ads is the most powerful lead generation channel for real estate in India — but most campaigns waste budget on unqualified leads because there\'s no system behind them. I build campaigns that are connected end-to-end: from targeting and creatives to instant CRM capture and automated follow-up.',
+      desc2: 'Every campaign I build is wired directly to your CRM and WhatsApp automation. The moment someone submits a lead form, they\'re in your CRM, assigned to an agent, and receiving a WhatsApp message — all within 30 seconds. That response speed is what separates closed deals from cold leads.',
+      features: [
+        { title: 'Audience Research & Targeting', desc: 'Layered interest, behavioural, and lookalike audiences built from your best existing buyers and project profiles.' },
+        { title: 'Instant Form + CRM Integration', desc: 'Meta Lead Ads connected directly to your CRM via API — zero manual imports, zero lag time.' },
+        { title: 'Creative Strategy & Testing', desc: 'Ad copy, visuals, and video formats tested systematically — winning creatives scaled, losers cut fast.' },
+        { title: 'Retargeting Funnels', desc: 'Warm audiences re-engaged with project-specific messaging at every stage of their decision journey.' },
+        { title: 'Budget Optimisation', desc: 'Continuous bid strategy, placement, and budget adjustments to maximise lead volume at target CPL.' },
+        { title: 'Performance Reporting', desc: 'Weekly reporting with CPL, CTR, ROAS, and lead quality analysis tied to your CRM conversion data.' },
+      ],
+      results: [{ num: '30s', label: 'Average lead-to-CRM time after form submission' }, { num: '40%', label: 'Typical CPL reduction after first 30 days of optimisation' }, { num: '5×', label: 'More qualified site visits from retargeting campaigns' }],
+      steps: [
+        { title: 'Project & Audience Brief', desc: 'Understanding your project, USPs, target buyer profile, and budget to build the right targeting strategy.' },
+        { title: 'Campaign Build & Launch', desc: 'Ad account setup, pixel installation, audience creation, creative production, and campaign launch.' },
+        { title: 'CRM & Automation Wiring', desc: 'Lead forms connected to CRM, WhatsApp follow-up triggered instantly — tested end-to-end before going live.' },
+        { title: 'Optimise & Scale', desc: 'Weekly performance reviews, A/B test results actioned, budget reallocated to highest-performing ad sets.' },
+      ],
+      info: ['Facebook & Instagram campaigns', 'Meta Business Suite setup', 'Pixel & Conversion API setup', 'Landing page integration available', 'Monthly retainer or project basis'],
+    },
+    'whatsapp-ai': {
+      badge: 'WhatsApp AI',
+      title: 'WhatsApp AI <em>Automation</em>',
+      sub: 'An AI-powered WhatsApp system that engages every lead instantly, qualifies them automatically, and books site visits — without any human involvement for the first 10 messages.',
+      img: 'https://images.unsplash.com/photo-1633354931133-27ac1ee5d853?w=1200&q=80',
+      desc1: 'WhatsApp is where Indian real estate buyers want to communicate — but manually managing conversations at scale is impossible. I build AI-driven WhatsApp flows using the official Business API that handle everything from the first "Hi" to confirming a site visit appointment.',
+      desc2: 'The AI bot qualifies leads by budget, timeline, and project preference, sends brochures and floor plan images, handles common objections, and hands off to a human agent only when the lead is ready for a serious conversation. All conversation history syncs back to your CRM automatically.',
+      features: [
+        { title: 'AI Chatbot with NLP', desc: 'Natural language responses trained on your project details, FAQs, and pricing — handles 80% of conversations without human input.' },
+        { title: 'Automated Lead Qualification', desc: 'Asks the right questions — budget, timeline, property type, location preference — and scores leads automatically.' },
+        { title: 'Drip Sequences & Broadcasts', desc: 'Multi-day WhatsApp nurture sequences sent at optimal times based on lead stage and behaviour.' },
+        { title: 'Site Visit Booking', desc: 'AI bot checks availability and books site visits directly in your calendar — confirmation sent to both lead and agent.' },
+        { title: 'Human Handoff Protocol', desc: 'Smart escalation logic routes hot leads to the right sales rep with full conversation context attached.' },
+        { title: 'CRM Sync & Logging', desc: 'Every message, response, and qualification answer logged to the lead\'s CRM record in real time.' },
+      ],
+      results: [{ num: '24/7', label: 'Lead engagement without any human availability requirement' }, { num: '3×', label: 'More site visits booked with automated scheduling' }, { num: '80%', label: 'Of enquiries handled fully by AI before agent involvement' }],
+      steps: [
+        { title: 'WhatsApp Business API Setup', desc: 'Official API account, phone number verification, business profile, and message template approvals.' },
+        { title: 'Bot Flow Design', desc: 'Conversation flows mapped out based on your lead journey — qualification logic, responses, and escalation triggers.' },
+        { title: 'AI Training & Integration', desc: 'Bot trained on your project data, FAQs, pricing, and objections. Connected to CRM and calendar tools.' },
+        { title: 'Testing & Go-Live', desc: 'End-to-end testing across all scenarios. Soft launch with monitoring before full rollout.' },
+      ],
+      info: ['Official WhatsApp Business API', 'Works with Make.com / n8n', 'GPT-4 powered responses', 'Template message management', 'Multi-project support available'],
+    },
+    'follow-up-automation': {
+      badge: 'Follow-Up Systems',
+      title: 'Follow-Up <em>Automation</em>',
+      sub: 'A multi-channel follow-up system that ensures every lead is contacted at the right time, through the right channel, with the right message — automatically.',
+      img: 'https://images.unsplash.com/photo-1460472178825-e5240623afd5?w=1200&q=80',
+      desc1: 'The difference between a team that closes 5% of leads and one that closes 20% is follow-up consistency. Most real estate teams follow up 1–2 times and give up. I build automated sequences that touch leads 8–12 times across WhatsApp, email, and SMS — based on their behaviour, not a calendar.',
+      desc2: 'Every follow-up is triggered by lead actions — if they open a brochure, a specific message fires. If they go silent for 3 days, a re-engagement message fires. If they visit the site but don\'t book, a different sequence starts. The system never forgets and never gives up.',
+      features: [
+        { title: 'Multi-Channel Sequences', desc: 'WhatsApp, email, and SMS combined into a single coordinated sequence — channels chosen based on lead preference and stage.' },
+        { title: 'Behaviour-Based Triggers', desc: 'Follow-ups triggered by lead actions — form submission, message reply, brochure open, site visit scheduled, and more.' },
+        { title: 'Stage-Specific Messaging', desc: 'Different message sequences for cold leads, warm leads, site visit confirmed, post-visit follow-up, and negotiation stage.' },
+        { title: 'Re-Engagement Campaigns', desc: 'Automated flows to revive leads that have gone cold — fresh angle, fresh creative, different channel.' },
+        { title: 'Agent Task Creation', desc: 'When automation reaches its limit, a task is created in CRM and assigned to the right agent with context.' },
+        { title: 'Unsubscribe & Compliance', desc: 'GDPR and WhatsApp policy compliant opt-out handling built into every sequence.' },
+      ],
+      results: [{ num: '8–12×', label: 'More touchpoints per lead vs manual follow-up' }, { num: '35%', label: 'More leads converted from automated re-engagement alone' }, { num: '0', label: 'Leads forgotten — every enquiry gets a structured journey' }],
+      steps: [
+        { title: 'Lead Journey Mapping', desc: 'We map every stage a lead goes through and define what communication should happen at each point.' },
+        { title: 'Message & Sequence Design', desc: 'Crafting the right message for each touchpoint — WhatsApp, email, and SMS templates created and approved.' },
+        { title: 'Automation Build', desc: 'Sequences built in Make.com or your automation platform, connected to CRM triggers and lead stage logic.' },
+        { title: 'Testing & Optimisation', desc: 'A/B testing message variants, timing, and channels. Ongoing refinement based on open rates and reply rates.' },
+      ],
+      info: ['WhatsApp + Email + SMS', 'Make.com / Zapier / n8n', 'Behaviour-triggered logic', 'CRM stage-based triggers', 'Monthly sequence review included'],
+    },
+    'ai-calling-agent': {
+      badge: 'AI Calling',
+      title: 'AI Calling Agent <em>Integration</em>',
+      sub: 'An AI voice agent that calls new leads within 60 seconds of form submission, qualifies them, and logs a full summary to your CRM — before your human team even sees the lead.',
+      img: 'https://images.unsplash.com/photo-1593508512255-86ab42a8e620?w=1200&q=80',
+      desc1: 'Speed to lead is the single biggest factor in real estate conversion. When a lead submits a form at 11 PM, no human agent is available — but my AI calling agent is. It calls the lead within 60 seconds, introduces the project naturally, asks qualification questions, and books the next step.',
+      desc2: 'The entire call is recorded, transcribed, and summarised. The lead\'s budget, timeline, preferences, and sentiment are logged directly to their CRM record. When your human agent calls in the morning, they have a complete briefing ready — not a cold lead they know nothing about.',
+      features: [
+        { title: 'Instant Lead Call Trigger', desc: 'AI agent triggered automatically within 60 seconds of a Meta Ads form submission or website enquiry.' },
+        { title: 'Natural Conversation Flow', desc: 'Human-like voice with natural pauses, follow-up questions, and project-specific talking points built in.' },
+        { title: 'Qualification & Scoring', desc: 'Captures budget, timeline, location preference, and buying intent — scores the lead and flags hot prospects.' },
+        { title: 'Call Recording & Transcription', desc: 'Full call recording with AI transcription — every word captured and stored against the lead record.' },
+        { title: 'CRM Summary Logging', desc: 'Structured call summary with key qualification data pushed to CRM automatically after every call.' },
+        { title: 'Escalation to Human Agent', desc: 'Hot leads flagged immediately with an alert to the assigned agent — handoff with full context attached.' },
+      ],
+      results: [{ num: '<60s', label: 'Average time from form submission to AI call' }, { num: '4×', label: 'Higher contact rate vs calling leads manually next day' }, { num: '100%', label: 'Calls logged and summarised — zero data loss' }],
+      steps: [
+        { title: 'Call Script Design', desc: 'Building the qualification script, objection responses, and project-specific talking points for the AI agent.' },
+        { title: 'Voice Agent Setup', desc: 'Configuring the AI calling platform, voice selection, language, and tone to match your brand.' },
+        { title: 'CRM & Trigger Integration', desc: 'Connecting the calling agent to your Meta Ads leads, CRM, and WhatsApp follow-up flows.' },
+        { title: 'Testing & Refinement', desc: 'Full end-to-end testing with real call scenarios. Script refined based on first 50 calls.' },
+      ],
+      info: ['Works with Vapi, Bland, Retell AI', 'Hindi + English support', 'Connects to any CRM', 'Call recording & transcription', 'Works 24/7 including weekends'],
+    },
+    'lead-qualification': {
+      badge: 'Lead Qualification',
+      title: 'Lead Qualification <em>Systems</em>',
+      sub: 'Automated scoring and routing that ensures your sales team spends time only on leads who are genuinely ready to buy — not chasing tyre-kickers.',
+      img: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&q=80',
+      desc1: 'Real estate teams waste enormous time on leads that were never going to buy. I build qualification systems that score every lead based on budget range, timeline, property type match, source quality, and engagement behaviour — and route high-intent leads to your best closers automatically.',
+      desc2: 'The qualification logic runs across every channel simultaneously. Whether a lead comes from Meta Ads, a WhatsApp broadcast, a website form, or a referral — they go through the same scoring model, and your team sees a prioritised pipeline instead of a chaotic list.',
+      features: [
+        { title: 'Lead Scoring Model', desc: 'Custom scoring matrix built on budget, timeline, engagement, source quality, and project fit — scored 0–100.' },
+        { title: 'Automated Routing Rules', desc: 'High-score leads assigned to senior closers, mid-score to juniors, low-score to nurture sequences.' },
+        { title: 'Multi-Channel Qualification', desc: 'Qualification questions delivered via WhatsApp bot, Meta Ads form, or landing page — all data unified.' },
+        { title: 'Intent Signal Tracking', desc: 'Tracks brochure downloads, price list requests, site visit enquiries — each action adjusts the lead score.' },
+        { title: 'Disqualification Logic', desc: 'Leads outside budget, location, or timeline automatically moved to a long-term nurture pool — not deleted.' },
+        { title: 'Manager Visibility Dashboard', desc: 'Real-time view of lead score distribution, routing performance, and qualification funnel conversion rates.' },
+      ],
+      results: [{ num: '70%', label: 'Less time wasted on unqualified leads by sales team' }, { num: '2×', label: 'Improvement in site visit to booking conversion rate' }, { num: '100%', label: 'Lead source and qualification data captured automatically' }],
+      steps: [
+        { title: 'Buyer Profile Definition', desc: 'Working with your sales team to define what a qualified lead actually looks like for each project.' },
+        { title: 'Scoring Model Build', desc: 'Building the scoring logic, weighting each qualification factor based on your sales data and team insight.' },
+        { title: 'Integration & Testing', desc: 'Connecting scoring to CRM, WhatsApp, and ad platforms. Testing with real lead scenarios.' },
+        { title: 'Refinement & Calibration', desc: 'Monthly review of scoring accuracy — adjusting weights based on which leads actually converted.' },
+      ],
+      info: ['Works with any CRM', 'Multi-source lead scoring', 'Custom qualification criteria', 'WhatsApp + form integration', 'Monthly calibration reviews'],
+    },
+    'sales-funnel': {
+      badge: 'Sales Funnels',
+      title: 'Sales Funnel <em>Automation</em>',
+      sub: 'End-to-end automated sales funnels that take a prospect from their first ad click to a confirmed site visit — with zero manual intervention required.',
+      img: 'https://images.unsplash.com/photo-1582407947304-fd86f028f716?w=1200&q=80',
+      desc1: 'A sales funnel isn\'t just a landing page — it\'s the entire journey a buyer takes from first awareness to showing up at your site. I design and build funnels that guide leads through each stage automatically, with the right message, offer, and call-to-action for where they are in their journey.',
+      desc2: 'Every funnel I build is connected: Meta Ads at the top, landing page in the middle, CRM and WhatsApp at the bottom — with retargeting and nurture sequences running in parallel. The result is a system that compounds over time, getting better the more leads go through it.',
+      features: [
+        { title: 'Landing Page Design & Build', desc: 'High-converting project landing pages with enquiry forms, virtual tour embeds, and price list download gates.' },
+        { title: 'Meta Ads Funnel Integration', desc: 'Top-of-funnel awareness, mid-funnel retargeting, and bottom-of-funnel conversion campaigns working in sequence.' },
+        { title: 'Lead Magnet & Offer Design', desc: 'Price list, floor plan, or brochure download as lead magnet — captures contact details with soft opt-in.' },
+        { title: 'Automated Nurture Sequences', desc: 'Multi-step WhatsApp + email sequences that move leads from interest to intent to action.' },
+        { title: 'Site Visit Booking Flow', desc: 'Automated scheduling system connected to your team\'s calendar — lead picks a slot, confirmation sent instantly.' },
+        { title: 'Funnel Analytics', desc: 'Drop-off analysis at every stage — where leads leave the funnel and why, with optimisation recommendations.' },
+      ],
+      results: [{ num: '55%', label: 'More site visits booked from the same ad spend' }, { num: '3×', label: 'Higher landing page conversion with optimised CTA flow' }, { num: '90%', label: 'Reduction in manual effort to move a lead from form to visit' }],
+      steps: [
+        { title: 'Funnel Strategy & Mapping', desc: 'Designing the complete buyer journey from ad click to site visit — every step, every message, every channel.' },
+        { title: 'Landing Page Build', desc: 'High-converting page built and connected to your lead forms, CRM, and automation flows.' },
+        { title: 'Campaign & Automation Launch', desc: 'Meta Ads campaigns, WhatsApp sequences, and CRM triggers all activated and tested simultaneously.' },
+        { title: 'Optimise & Scale', desc: 'Weekly analysis of funnel metrics — continuous improvement of conversion rates at each stage.' },
+      ],
+      info: ['Full funnel design & build', 'Landing page included', 'Meta Ads + WhatsApp + CRM', 'Calendar booking integration', 'A/B testing built in'],
+    },
+    'dashboard-reporting': {
+      badge: 'Dashboards',
+      title: 'Dashboard &amp; <em>Reporting Systems</em>',
+      sub: 'Live management dashboards that connect your CRM, Meta Ads, and WhatsApp data into one single view — so leadership always knows exactly what\'s happening without asking.',
+      img: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&q=80',
+      desc1: 'Real estate management teams make decisions based on gut feeling because they don\'t have the right data at the right time. I build live dashboards that pull data from your CRM, Meta Ads account, WhatsApp analytics, and Google Sheets — giving you a single source of truth updated in real time.',
+      desc2: 'Whether you need a daily CPL report, a weekly pipeline review, or a monthly site visit conversion analysis — the dashboard is there, live, requiring no manual data collection. Your team stops spending hours on reporting and starts spending that time on selling.',
+      features: [
+        { title: 'Live CRM Pipeline Dashboard', desc: 'Real-time view of leads by stage, agent, project, and source — with conversion rates at every transition.' },
+        { title: 'Meta Ads Performance View', desc: 'CPL, CTR, spend, reach, and lead volume from all campaigns in one dashboard — updated daily.' },
+        { title: 'WhatsApp Engagement Metrics', desc: 'Message delivery rates, response rates, bot qualification completion, and site visit booking data.' },
+        { title: 'Agent Performance Report', desc: 'Individual agent activity — calls made, leads contacted, site visits booked, and closings attributed.' },
+        { title: 'Lead Source Attribution', desc: 'Which campaigns, ad sets, or channels are driving the highest quality leads — tracked to closing.' },
+        { title: 'Automated Report Delivery', desc: 'Daily, weekly, or monthly reports sent automatically to management via email or WhatsApp — no manual exports.' },
+      ],
+      results: [{ num: '100%', label: 'Data visibility without manual reporting effort' }, { num: '5 hrs', label: 'Saved per week per manager on reporting tasks' }, { num: 'Real-time', label: 'Dashboard updates — decisions made on live data' }],
+      steps: [
+        { title: 'Data Source Audit', desc: 'Identifying all the places your sales data lives — CRM, ads platform, WhatsApp, spreadsheets.' },
+        { title: 'Dashboard Design', desc: 'Designing the right views for each stakeholder — management, sales manager, and marketing team views.' },
+        { title: 'Data Pipeline Build', desc: 'Connecting all sources via APIs and automation — live data flowing into your dashboard infrastructure.' },
+        { title: 'Training & Handover', desc: 'Full team training on reading and using the dashboard. Documentation provided for new team members.' },
+      ],
+      info: ['Google Looker Studio / Metabase', 'Connected to CRM + Meta + WhatsApp', 'Daily automated reports', 'Custom views per stakeholder', 'Google Sheets integration available'],
+    },
+
+    /* ─── PROCESS STEP SERVICES ─── */
+    'process-discovery': {
+      badge: 'Step 01',
+      title: 'Discovery & <em>Audit</em>',
+      sub: 'Every great system starts with a deep understanding of where you are today — your current tools, workflows, team structure, and the exact points where leads are being lost.',
+      img: 'https://images.unsplash.com/photo-1553877522-43269d4ea984?w=1200&q=80',
+      desc1: 'Before I touch a single tool or write a single automation, I spend dedicated time understanding your business. Discovery isn\'t a formality — it\'s the foundation everything else is built on. I interview your sales team, audit your current CRM setup, review your lead flow, and identify where the biggest leaks are.',
+      desc2: 'The output of Discovery is a clear map of your current state, a diagnosis of the problems, and a prioritised plan of what to build first. Most clients are surprised by what this process reveals — gaps they didn\'t know existed and quick wins they can implement immediately.',
+      features: [
+        { title: 'Sales Process Mapping', desc: 'Documenting every step from lead capture to closing — who does what, when, and with which tools.' },
+        { title: 'CRM & Tool Audit', desc: 'Reviewing your existing CRM, ad accounts, WhatsApp setup, and any automation already in place.' },
+        { title: 'Lead Flow Analysis', desc: 'Tracing where leads come from, how they move through the pipeline, and where they drop off.' },
+        { title: 'Team Interview Sessions', desc: 'Conversations with sales managers and agents to understand real-world pain points vs theoretical ones.' },
+        { title: 'Gap & Opportunity Report', desc: 'Written summary of what\'s working, what\'s broken, and what\'s missing — with impact ranked by priority.' },
+        { title: 'Implementation Roadmap', desc: 'A phased plan showing what gets built in what order, with timelines and dependencies clearly mapped.' },
+      ],
+      results: [{ num: '100%', label: 'Clarity on where leads are being lost before any build starts' }, { num: '3–5', label: 'Quick wins identified in every Discovery session' }, { num: '1 week', label: 'Typical Discovery timeline before full plan is ready' }],
+      steps: [
+        { title: 'Initial Briefing Call', desc: 'Understanding your business, team size, project types, and the biggest challenges you\'re facing.' },
+        { title: 'Tool & Platform Audit', desc: 'Access to your CRM, ad accounts, and existing workflows — audited thoroughly.' },
+        { title: 'Team Interviews', desc: 'Sessions with key team members to capture real-world workflow gaps and frustrations.' },
+        { title: 'Discovery Report & Roadmap', desc: 'Delivery of a written report with diagnosis, priorities, and a phased implementation plan.' },
+      ],
+      info: ['1 week typical timeline', 'Remote or in-person sessions', 'Written report delivered', 'No obligation to proceed', 'Included in full engagements'],
+    },
+    'process-workflow': {
+      badge: 'Step 02',
+      title: 'Workflow <em>Planning</em>',
+      sub: 'With a clear picture of your current state, I design the exact workflows that will be automated — mapping every trigger, action, and decision point before a single tool is touched.',
+      img: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1200&q=80',
+      desc1: 'Workflow Planning is where strategy becomes architecture. I take the insights from Discovery and design the actual automation logic — every trigger, every branch, every condition, every action. This isn\'t a rough sketch; it\'s a detailed blueprint that the entire implementation will be built from.',
+      desc2: 'I document workflows in plain language so your team can understand them, review them, and sign off before a single automation is built. This prevents costly rebuilds later and ensures the system actually matches how your team wants to work — not just how I think they should.',
+      features: [
+        { title: 'Automation Logic Design', desc: 'Every workflow mapped with triggers, conditions, branches, and actions — nothing left to interpretation.' },
+        { title: 'Tool Selection & Stack Planning', desc: 'Choosing the right CRM, automation platform, and integrations for your specific use case and budget.' },
+        { title: 'Lead Journey Documentation', desc: 'The complete path a lead takes from first touch to closing — every automated touchpoint documented.' },
+        { title: 'Edge Case Planning', desc: 'What happens when a lead replies in an unexpected way? What if an agent is on leave? Every scenario covered.' },
+        { title: 'Integration Architecture', desc: 'How all tools connect — data flow, API dependencies, and fallback logic mapped before implementation.' },
+        { title: 'Team Sign-Off Process', desc: 'Workflow documents reviewed and approved by your team before any build begins — no surprises.' },
+      ],
+      results: [{ num: '0', label: 'Costly rebuilds when workflows are planned thoroughly upfront' }, { num: '100%', label: 'Team alignment before implementation begins' }, { num: '40%', label: 'Faster implementation when workflows are pre-documented' }],
+      steps: [
+        { title: 'Workflow Drafting', desc: 'Creating detailed workflow documents for every automation to be built — triggers, conditions, and actions.' },
+        { title: 'Tool & Stack Finalization', desc: 'Confirming the exact platforms, APIs, and integrations that will power each workflow.' },
+        { title: 'Review & Iteration', desc: 'Sharing workflows with your team, gathering feedback, and refining until everything is aligned.' },
+        { title: 'Build Brief Handover', desc: 'Final documented workflow library that serves as the implementation guide for every automation.' },
+      ],
+      info: ['Delivered as documented workflows', 'Includes tool recommendations', 'Review sessions with your team', 'Plain-language format', 'Stored for future reference'],
+    },
+    'process-crm': {
+      badge: 'Step 03',
+      title: 'CRM <em>Setup</em>',
+      sub: 'Your CRM is built and configured from scratch — or rebuilt if you have one — with custom pipelines, fields, user roles, and automation rules engineered for your real estate process.',
+      img: 'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=1200&q=80',
+      desc1: 'With workflows planned and approved, CRM Setup is where the foundation gets built. I configure your chosen CRM with every custom field, pipeline stage, user permission, and automation rule needed. Nothing is left at default — every element is purpose-built for your real estate operation.',
+      desc2: 'A properly set up CRM changes everything. Leads no longer fall through the cracks because every entry point is covered. Agents stop working from spreadsheets because every lead, note, and activity lives in one place. Management can see the whole pipeline in real time without chasing anyone for updates.',
+      features: [
+        { title: 'Custom Pipeline Build', desc: 'Sales stages designed around your exact real estate process — from inquiry to booking to handover.' },
+        { title: 'Custom Field Configuration', desc: 'Every data point you need captured — budget, timeline, project interest, source — with the right field types.' },
+        { title: 'User Roles & Permissions', desc: 'Agents see their leads, managers see their team, directors see everything — access controlled precisely.' },
+        { title: 'Lead Entry Point Setup', desc: 'Every source connected — Meta Ads forms, website forms, WhatsApp, manual entry — all feeding the CRM.' },
+        { title: 'Automation Rules', desc: 'Stage change triggers, assignment rules, follow-up reminders, and escalation alerts configured and tested.' },
+        { title: 'Data Migration', desc: 'Existing leads and contacts migrated from spreadsheets or your old CRM — clean and properly tagged.' },
+      ],
+      results: [{ num: '100%', label: 'Lead capture from every source — zero manual imports' }, { num: '3×', label: 'Faster agent onboarding with a properly structured CRM' }, { num: '0', label: 'Leads lost due to missing assignment or follow-up rules' }],
+      steps: [
+        { title: 'CRM Platform Setup', desc: 'Account creation, domain connection, team invites, and base configuration completed.' },
+        { title: 'Pipeline & Field Build', desc: 'All custom pipelines, stages, and fields built to match your documented workflow design.' },
+        { title: 'Automation Rules Setup', desc: 'Lead assignment, follow-up triggers, and escalation logic configured and tested end-to-end.' },
+        { title: 'Integration & Data Migration', desc: 'Connected to all lead sources. Existing data migrated and validated before go-live.' },
+      ],
+      info: ['Salesforce, HubSpot, Zoho, or custom', '2–3 weeks typical build', 'Data migration included', 'Full team training session', 'Post-launch support included'],
+    },
+    'process-automation': {
+      badge: 'Step 04',
+      title: 'Automation <em>Development</em>',
+      sub: 'The automation layer is built — connecting every tool in your stack, triggering every workflow, and eliminating every manual step your team currently does by hand.',
+      img: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=1200&q=80',
+      desc1: 'Automation Development is where your stack comes alive. Using platforms like Make.com, n8n, or Zapier, I build the automation workflows that connect your CRM, Meta Ads, WhatsApp, AI calling agent, and reporting tools into a single, cohesive system.',
+      desc2: 'Every automation is built to the exact specification from the Workflow Planning phase. I test each one individually and then test them all together as a system. Edge cases are handled. Error notifications are built in. The system is designed to run reliably, not just in ideal conditions.',
+      features: [
+        { title: 'Multi-Platform Workflow Build', desc: 'Automations built across Make.com, Zapier, or n8n — connecting CRM, WhatsApp, Meta Ads, and more.' },
+        { title: 'WhatsApp Automation Flows', desc: 'Full WhatsApp AI bot and broadcast sequences deployed and connected to CRM lead stages.' },
+        { title: 'Meta Ads to CRM Pipeline', desc: 'Every lead form submission captured and routed in real time — zero delay, zero manual handling.' },
+        { title: 'AI Calling Agent Integration', desc: 'Calling agent triggered, call summary captured, and CRM record updated — fully automated end-to-end.' },
+        { title: 'Error Handling & Alerts', desc: 'Every automation has failure detection built in — errors trigger alerts so nothing runs silently broken.' },
+        { title: 'Documentation & Handover', desc: 'Every automation documented with purpose, trigger logic, and maintenance notes for your team.' },
+      ],
+      results: [{ num: '95%', label: 'Reduction in manual data entry and handoff tasks' }, { num: '24/7', label: 'System operation without human monitoring required' }, { num: '100%', label: 'Automation coverage across all documented workflows' }],
+      steps: [
+        { title: 'Integration Setup', desc: 'All platform connections established — API keys, webhooks, and authentication configured.' },
+        { title: 'Workflow Build', desc: 'Each automation built according to the workflow design document — one flow at a time, fully tested.' },
+        { title: 'System Integration Testing', desc: 'All automations tested together as a system — real lead scenarios run end-to-end.' },
+        { title: 'Documentation & Handover', desc: 'Complete automation documentation delivered. Team briefed on how the system works.' },
+      ],
+      info: ['Make.com / Zapier / n8n', 'WhatsApp + CRM + Meta Ads', 'Error handling built in', 'Full documentation provided', 'Post-launch monitoring included'],
+    },
+    'process-testing': {
+      badge: 'Step 05',
+      title: 'Testing & <em>Optimization</em>',
+      sub: 'Every automation is stress-tested with real scenarios before launch — and then continuously optimised based on actual performance data in the first 30–60 days.',
+      img: 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=1200&q=80',
+      desc1: 'No system goes live without thorough testing. I run every automation through real-world scenarios — including edge cases, failure points, and unexpected inputs — before anything touches live leads. Testing is methodical, documented, and signed off by your team before launch.',
+      desc2: 'After launch, optimisation begins. The first 30–60 days of live operation always reveal refinements — message timing, qualification question order, lead scoring weights, and more. I monitor closely, collect data, and make targeted improvements until the system is performing at its peak.',
+      features: [
+        { title: 'End-to-End Test Scenarios', desc: 'Every lead entry point, automation flow, and CRM trigger tested with real data — not just happy paths.' },
+        { title: 'Edge Case Testing', desc: 'What happens with duplicate leads, invalid numbers, unexpected replies, and API failures — all tested.' },
+        { title: 'UAT with Your Team', desc: 'User Acceptance Testing with your sales team before go-live — real agents using the real system.' },
+        { title: 'Performance Baseline', desc: 'Key metrics measured from day one — response time, lead contact rate, qualification completion, and more.' },
+        { title: '30-Day Optimisation Sprint', desc: 'First month of live data analysed weekly — targeted improvements made based on real performance.' },
+        { title: 'A/B Testing Framework', desc: 'WhatsApp message variants, follow-up timing, and qualification questions tested for optimal conversion.' },
+      ],
+      results: [{ num: '0', label: 'Critical issues found after go-live due to thorough pre-launch testing' }, { num: '25%', label: 'Average improvement in system performance in first 30 days' }, { num: '100%', label: 'Team confidence before any live leads enter the system' }],
+      steps: [
+        { title: 'Internal QA Testing', desc: 'Every automation tested by me against documented scenarios — issues logged and fixed.' },
+        { title: 'UAT with Sales Team', desc: 'Your team tests the system as real users — feedback gathered and addressed before launch.' },
+        { title: 'Soft Launch & Monitoring', desc: 'Go-live with a subset of leads — system monitored closely for the first 48 hours.' },
+        { title: 'Full Launch & Optimise', desc: 'Full go-live with monitoring in place. Weekly optimisation reviews for the first 30–60 days.' },
+      ],
+      info: ['Pre-launch UAT included', '30-day optimisation period', 'A/B testing for key flows', 'Performance reporting', 'Issue tracking & resolution'],
+    },
+    'process-deployment': {
+      badge: 'Step 06',
+      title: 'Deployment & <em>Support</em>',
+      sub: 'Go-live is just the beginning. I provide structured deployment, full team training, and ongoing support to ensure your system keeps performing as your business grows.',
+      img: 'https://images.unsplash.com/photo-1521791136064-7986c2920216?w=1200&q=80',
+      desc1: 'Deployment is handled carefully — not just a switch flip. I manage the go-live process in phases, ensuring your team is trained, your data is clean, and every integration is confirmed working under live conditions. Nothing is left to chance on launch day.',
+      desc2: 'After deployment, I stay close. Real estate businesses evolve — new projects launch, teams change, campaigns shift. Ongoing support ensures your automation system evolves with you. Whether it\'s adding a new lead source, adjusting a workflow, or training a new team member, support keeps your system in peak condition.',
+      features: [
+        { title: 'Phased Go-Live Plan', desc: 'Structured deployment schedule — systems activated in the right order with validation at each step.' },
+        { title: 'Full Team Training', desc: 'Live training sessions for agents, managers, and admins — everyone knows how to use the system.' },
+        { title: 'Training Documentation', desc: 'Written SOPs and video walkthroughs created so new team members can onboard without hand-holding.' },
+        { title: 'Post-Launch Monitoring', desc: 'System monitored closely in the first two weeks — issues caught and fixed before they compound.' },
+        { title: 'Monthly Support Retainer', desc: 'Ongoing support for changes, additions, troubleshooting, and performance reviews — system keeps growing.' },
+        { title: 'Quarterly System Review', desc: 'Full system audit every quarter — identifying new automation opportunities and optimisations.' },
+      ],
+      results: [{ num: '100%', label: 'Team adoption when training is structured and documented' }, { num: '2 weeks', label: 'Average time to full team proficiency post-launch' }, { num: 'Ongoing', label: 'System improvement through support and quarterly reviews' }],
+      steps: [
+        { title: 'Deployment Execution', desc: 'Phased go-live with every system activated, validated, and confirmed working in live conditions.' },
+        { title: 'Team Training Sessions', desc: 'Live training for all user roles — agents, managers, and admins — with Q&A and hands-on practice.' },
+        { title: 'Documentation Handover', desc: 'SOPs, video guides, and automation documentation delivered and stored in your team\'s workspace.' },
+        { title: 'Ongoing Support', desc: 'Monthly check-ins, issue resolution, and system improvements as your business grows and changes.' },
+      ],
+      info: ['Phased deployment plan', 'Live training sessions', 'Video documentation included', 'Monthly support available', 'Quarterly system reviews'],
+    },
+  };
+
+  var EXPERTISE = [
+    { id:'crm-setup',            num:'01', icon:'<rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/><path d="M6 8h4M6 11h8"/>',                                             title:'CRM Setup & Optimization',     tagline:'Centralize every lead in one place — custom pipelines, automated assignment, live reporting.' },
+    { id:'meta-ads',             num:'02', icon:'<path d="M22 12h-4l-3 9L9 3l-3 9H2"/>',                                                                                                           title:'Meta Ads Lead Generation',     tagline:'Full-funnel campaigns wired directly into your CRM — response time drops from hours to seconds.' },
+    { id:'whatsapp-ai',          num:'03', icon:'<path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>',                                                                      title:'WhatsApp AI Automation',       tagline:'AI handles first contact, qualification and site-visit booking — 24/7, without human effort.' },
+    { id:'follow-up-automation', num:'04', icon:'<polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14M7 23l-4-4 4-4"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/>',                      title:'Follow-Up Automation',         tagline:'Multi-channel sequences across WhatsApp, email and SMS — triggered automatically by lead stage.' },
+    { id:'ai-calling-agent',     num:'05', icon:'<circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/>',                                                                                         title:'AI Calling Agent Integration', tagline:'AI calls new leads within seconds of form submission and logs the full summary to your CRM.' },
+    { id:'lead-qualification',   num:'06', icon:'<path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>',                                                        title:'Lead Qualification Systems',   tagline:'Automated scoring and routing — your team only ever speaks to buyers who are ready to move.' },
+    { id:'sales-funnel',         num:'07', icon:'<path d="M18 20V10M12 20V4M6 20v-6"/>',                                                                                                           title:'Sales Funnel Automation',      tagline:'End-to-end pipeline from landing page to booking — zero drop-off gaps, full stage visibility.' },
+    { id:'dashboard-reporting',  num:'08', icon:'<rect x="2" y="2" width="9" height="9"/><rect x="13" y="2" width="9" height="9"/><rect x="2" y="13" width="9" height="9"/><path d="M13 13h9v9"/>',title:'Dashboard & Reporting',        tagline:'Live dashboards connecting CRM, Meta Ads and WhatsApp — management visibility without asking.' },
+  ];
+
+  var PROJECTS = [
+    { id:'crm-setup',            badge:'CRM System',  img:'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=600&q=80', title:'Real Estate CRM Build' },
+    { id:'meta-ads',             badge:'Meta Ads',    img:'https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=600&q=80', title:'Meta Ads Lead Funnel' },
+    { id:'whatsapp-ai',          badge:'WhatsApp AI', img:'https://images.unsplash.com/photo-1633354931133-27ac1ee5d853?w=600&q=80', title:'WhatsApp AI Chat System' },
+    { id:'sales-funnel',         badge:'Site Visit',  img:'https://images.unsplash.com/photo-1582407947304-fd86f028f716?w=600&q=80', title:'Site Visit Booking System' },
+    { id:'dashboard-reporting',  badge:'Dashboard',   img:'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=80', title:'Lead Tracking Dashboard' },
+    { id:'ai-calling-agent',     badge:'AI Calling',  img:'https://images.unsplash.com/photo-1593508512255-86ab42a8e620?w=600&q=80', title:'AI Calling Agent System' },
+  ];
+
+  var CASES = [
+    { id:'crm-setup',   num:'01', title:'Builder Lead Management Overhaul' },
+    { id:'meta-ads',    num:'02', title:'Brokerage Automation System' },
+    { id:'whatsapp-ai', num:'03', title:'WhatsApp Lead Qualification System' },
+  ];
+
+  var PROCESS_STEPS = [
+    { num:'01', title:'Discovery',              serviceId:'process-discovery' },
+    { num:'02', title:'Workflow Planning',      serviceId:'process-workflow' },
+    { num:'03', title:'CRM Setup',              serviceId:'process-crm' },
+    { num:'04', title:'Automation Development', serviceId:'process-automation' },
+    { num:'05', title:'Testing & Optimization', serviceId:'process-testing' },
+    { num:'06', title:'Deployment & Support',   serviceId:'process-deployment' },
+  ];
+
+  /* ─── BUILD MAIN GRIDS ─── */
+  document.getElementById('expertiseGrid').innerHTML = EXPERTISE.map(function(s,i) {
+    return '<div class="expertise-card reveal-card" style="transition-delay:'+(i%4*0.1)+'s" onclick="showService(\''+s.id+'\')">'+
+      '<span class="ec-num">'+s.num+'</span>'+
+      '<div class="card-icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">'+s.icon+'</svg></div>'+
+      '<div class="ec-title">'+s.title+'</div>'+
+      '<div class="ec-tagline">'+s.tagline+'</div>'+
+      '<div class="ec-divider"></div>'+
+      '<span class="ec-cta">Explore Service '+ARROW+'</span></div>';
+  }).join('');
+
+  document.getElementById('projectsGrid').innerHTML = PROJECTS.map(function(p,i) {
+    return '<div class="project-card reveal-card" style="transition-delay:'+(i%3*0.1)+'s" onclick="showService(\''+p.id+'\')">'+
+      '<div class="project-img-wrap"><img src="'+p.img+'" alt="'+p.title+'" class="project-img" loading="lazy" />'+
+      '<div class="project-overlay"></div><span class="project-badge">'+p.badge+'</span></div>'+
+      '<div class="project-body"><div class="project-title">'+p.title+'</div>'+
+      '<div class="project-divider"></div>'+
+      '<span class="project-cta">View Project '+ARROW+'</span></div></div>';
+  }).join('');
+
+  document.getElementById('casesGrid').innerHTML = CASES.map(function(c,i) {
+    return '<div class="case-card reveal-card" style="transition-delay:'+(i*0.12)+'s" onclick="showService(\''+c.id+'\')">'+
+      '<div class="case-num">'+c.num+'</div>'+
+      '<div class="case-title">'+c.title+'</div>'+
+      '<div class="case-divider"></div>'+
+      '<span class="case-cta">Read Full Case '+ARROW+'</span></div>';
+  }).join('');
+
+  document.getElementById('processTimeline').innerHTML = PROCESS_STEPS.map(function(s,i) {
+    return '<div class="process-step reveal-card" style="transition-delay:'+(i%3*0.1)+'s" onclick="showService(\''+s.serviceId+'\')">'+
+      '<div class="step-num">'+s.num+'</div>'+
+      '<div class="step-title">'+s.title+'</div>'+
+      '<div class="step-divider"></div>'+
+      '<span class="step-cta">Learn More '+ARROW+'</span></div>';
+  }).join('');
+
+  /* ─── ROUTING ─── */
+  function showService(id) {
+    var svc = SERVICES[id];
+    if (!svc) return;
+    var others = EXPERTISE.filter(function(e){ return e.id !== id; }).slice(0,3);
+    var moreHtml = others.map(function(e) {
+      return '<div class="svc-more-card" onclick="showService(\''+e.id+'\')">'+
+        '<h3>'+e.title+'</h3><p>'+e.tagline+'</p>'+
+        '<span class="ec-cta" style="display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:var(--gold);padding-top:12px;">Explore '+ARROW+'</span></div>';
+    }).join('');
+
+    var featuresHtml = svc.features.map(function(f) {
+      return '<div class="svc-feature"><div class="svc-feature-check">'+CHECK+'</div>'+
+        '<div class="svc-feature-text"><strong>'+f.title+'</strong><span>'+f.desc+'</span></div></div>';
+    }).join('');
+
+    var resultsHtml = svc.results.map(function(r) {
+      return '<div class="svc-result-card"><div class="svc-result-num">'+r.num+'</div><div class="svc-result-label">'+r.label+'</div></div>';
+    }).join('');
+
+    var stepsHtml = svc.steps.map(function(s,i) {
+      return '<div class="svc-step"><div class="svc-step-num">0'+(i+1)+'</div>'+
+        '<div class="svc-step-content"><strong>'+s.title+'</strong><span>'+s.desc+'</span></div></div>';
+    }).join('');
+
+    var infoHtml = svc.info.map(function(i){ return '<li>'+i+'</li>'; }).join('');
+
+    document.getElementById('page-service').innerHTML =
+      '<section class="svc-hero">'+
+        '<div class="svc-hero-bg"><img src="'+svc.img+'" class="svc-hero-img" alt="'+id+'" /><div class="svc-hero-overlay"></div></div>'+
+        '<div class="svc-hero-content">'+
+          '<div class="svc-breadcrumb"><a onclick="goHome()">Home</a> <span>›</span> <a onclick="goHome(\'process\')">Process</a> <span>›</span> <span style="color:rgba(255,255,255,0.7)">'+svc.badge+'</span></div>'+
+          '<span class="svc-badge">'+svc.badge+'</span>'+
+          '<h1>'+svc.title+'</h1>'+
+          '<p class="svc-hero-sub">'+svc.sub+'</p>'+
+          '<a href="#svc-contact" onclick="goHome(\'contact\')" class="btn-primary" style="margin-right:12px">Get This Built For Me</a>'+
+          '<a href="https://wa.me/918469831950" target="_blank" class="btn-secondary" style="display:inline-block">WhatsApp Me</a>'+
+        '</div>'+
+      '</section>'+
+      '<div class="svc-body"><div class="container"><div class="svc-grid">'+
+        '<div class="svc-main">'+
+          '<h2 class="svc-section-title">What This <em>Involves</em></h2>'+
+          '<p class="svc-para">'+svc.desc1+'</p>'+
+          '<p class="svc-para">'+svc.desc2+'</p>'+
+          '<h2 class="svc-section-title" style="margin-top:40px">What\'s <em>Included</em></h2>'+
+          '<div class="svc-features">'+featuresHtml+'</div>'+
+          '<h2 class="svc-section-title" style="margin-top:48px">Expected <em>Outcomes</em></h2>'+
+          '<div class="svc-results">'+resultsHtml+'</div>'+
+          '<h2 class="svc-section-title" style="margin-top:48px">How It <em>Works</em></h2>'+
+          '<div class="svc-process-steps">'+stepsHtml+'</div>'+
+        '</div>'+
+        '<div class="svc-sidebar">'+
+          '<div class="svc-cta-card">'+
+            '<h3>Ready to Get Started?</h3>'+
+            '<p>Let\'s discuss your project and scope the right solution for your team.</p>'+
+            '<a onclick="goHome(\'contact\')" class="btn-primary" style="display:block;text-align:center;margin-bottom:10px;cursor:pointer">Schedule Consultation</a>'+
+            '<a href="https://wa.me/918469831950" class="svc-cta-wa" target="_blank">'+
+              '<svg viewBox="0 0 24 24" style="width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>'+
+              'Chat on WhatsApp'+
+            '</a>'+
+          '</div>'+
+          '<div class="svc-info-card">'+
+            '<h4>Step Details</h4>'+
+            '<ul class="svc-info-list">'+infoHtml+'</ul>'+
+          '</div>'+
+          '<div class="svc-info-card">'+
+            '<h4>Contact</h4>'+
+            '<ul class="svc-info-list">'+
+              '<li>vinitdhabaliya@gmail.com</li>'+
+              '<li>+91 84698 31950</li>'+
+              '<li>Based in India · Remote-first</li>'+
+            '</ul>'+
+          '</div>'+
+        '</div>'+
+      '</div></div></div>'+
+      '<div class="svc-more"><div class="container">'+
+        '<h2>Other <em>Services</em></h2>'+
+        '<div class="svc-more-grid">'+moreHtml+'</div>'+
+        '<div style="margin-top:40px"><a onclick="goHome(\'expertise\')" class="btn-primary" style="cursor:pointer">View All Services</a></div>'+
+      '</div></div>';
+
+    document.getElementById('page-main').style.display = 'none';
+    document.getElementById('page-service').style.display = 'block';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.location.hash = 'services/' + id;
+  }
+
+  function goHome(section) {
+    document.getElementById('page-main').style.display = 'block';
+    document.getElementById('page-service').style.display = 'none';
+    window.location.hash = section ? section : '';
+    if (section) {
+      setTimeout(function() {
+        var el = document.getElementById(section);
+        if (el) el.scrollIntoView({ behavior: 'smooth' });
+      }, 60);
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  }
+
+  /* Handle initial hash */
+  (function() {
+    var h = window.location.hash.replace('#','');
+    if (h.indexOf('services/') === 0) {
+      var id = h.replace('services/','');
+      if (SERVICES[id]) showService(id);
+    }
+  })();
+
+  /* ─── NAVBAR ─── */
+  var navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', function() {
+    navbar.classList.toggle('scrolled', window.scrollY > 40);
+  });
+
+  /* ─── HAMBURGER ─── */
+  var hamburger = document.getElementById('hamburger');
+  var mobileNav = document.getElementById('mobileNav');
+  hamburger.addEventListener('click', function() {
+    var open = mobileNav.classList.toggle('open');
+    var spans = hamburger.querySelectorAll('span');
+    if (open) { spans[0].style.transform='translateY(6.5px) rotate(45deg)'; spans[1].style.opacity='0'; spans[2].style.transform='translateY(-6.5px) rotate(-45deg)'; }
+    else { spans.forEach(function(s){ s.style.transform=''; s.style.opacity=''; }); }
+  });
+  function closeMobile() {
+    mobileNav.classList.remove('open');
+    hamburger.querySelectorAll('span').forEach(function(s){ s.style.transform=''; s.style.opacity=''; });
+  }
+
+  /* ─── SCROLL REVEAL ─── */
+  var obs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal-fade,.reveal-up,.reveal-card').forEach(function(el){ obs.observe(el); });
+
+  /* ─── CONTACT FORM ─── */
+  document.getElementById('contactForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    var name=document.getElementById('name').value.trim(), email=document.getElementById('email').value.trim();
+    var wa=document.getElementById('whatsapp').value.trim(), req=document.getElementById('requirement').value.trim();
+    var status=document.getElementById('formStatus'), btn=document.getElementById('submitBtn');
+    if (!name||!email){ status.className='form-status error'; status.textContent='Please fill in your name and email.'; return; }
+    var msg='*New Portfolio Inquiry*\n\n*Name:* '+name+'\n*Email:* '+email+'\n';
+    if(wa) msg+='*WhatsApp:* '+wa+'\n';
+    if(req) msg+='\n*Requirement:*\n'+req;
+    var waURL='https://wa.me/918469831950?text='+encodeURIComponent(msg);
+    btn.textContent='Opening WhatsApp…'; btn.disabled=true;
+    status.className='form-status success'; status.textContent='WhatsApp is opening with your details — just press Send!';
+    setTimeout(function(){ var p=window.open(waURL,'_blank'); if(!p||p.closed) window.location.href=waURL; }, 250);
+    setTimeout(function(){ btn.textContent='Schedule Consultation'; btn.disabled=false; status.className='form-status'; status.textContent=''; document.getElementById('contactForm').reset(); }, 6000);
+  });
+  </script>
+</body>
+</html>
